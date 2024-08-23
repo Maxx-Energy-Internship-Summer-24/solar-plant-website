@@ -25,8 +25,10 @@ Getting Started
 * pip install -r requirements.txt (for Flask backend)
 
 3. Start the application:
+* cd frontend (for React frontend)
 * npm start (for React frontend)
-* python app.py (for Flask backend)
+* cd backend (for Flask backend)
+* python main.py (for Flask backend)
 
 Teams and Objectives
 * App Dev:
