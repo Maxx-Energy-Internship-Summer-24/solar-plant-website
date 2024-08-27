@@ -33,11 +33,47 @@ const About = () => {
          />
       </div>
       <div className="App-header flex flex-col items-center justify-center min-h-screen bg-gray-100">
-        <h1 className="text-6xl font-bold m-[10%]">Meet the Team</h1>
+        <h1 className="text-6xl font-bold mb-[10%]">Meet the Team</h1>
         <div className="grid grid-cols-3 justify-items-center gap-4 w-[100%]">
-          <h1 className='text-4xl font-bold'>DevOps</h1>
-          <h1 className='text-4xl font-bold'>Support</h1>
-          <h1 className='text-4xl font-bold'>Data</h1>
+          <div>
+            <h1 className='text-4xl font-bold p-4'>DevOps</h1>
+            <ul className='ml-6'>
+              <li>Ty Reid</li>
+              <li>Torell Butler</li>
+              <li>Pierre Antwi</li>
+              <li>Jovens Sagesse</li>
+              <li>Alfred Chukwuma</li>
+              <li>Jahaziel Ramos</li>
+              <li>Brauleo Lizardo</li>
+              <li>Clara Edwards</li>
+            </ul>
+          </div>
+          <div>
+            <h1 className='text-4xl font-bold p-4'>Support</h1>
+            <ul className='ml-6'>
+              <li>Ty Reid</li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+          <div>
+            <h1 className='text-4xl font-bold p-4'>Data</h1>
+            <ul className='ml-6'>
+              <li>Ty Reid</li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
