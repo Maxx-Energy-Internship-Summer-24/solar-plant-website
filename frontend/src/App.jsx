@@ -5,7 +5,7 @@ import About from './pages/About'
 import FAQ from './pages/FAQ'
 import Data from './pages/Data'
 import Login from './pages/Login'
-import Nabber from './components/Navbar'
+import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 
