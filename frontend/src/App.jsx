@@ -13,6 +13,7 @@ import './styles/global.css'
 
 
 const App = () => {
+  /*
   const [data, setData] = useState([{}])
   useEffect(() => {
     fetch("/members").then(
@@ -22,7 +23,7 @@ const App = () => {
         setData(data)
       }
     )
-  }, [])
+  }, []) */
   return (
     <BrowserRouter>
       <Routes>
