@@ -25,6 +25,8 @@ const App = () => {
     )
   }, []) */
   return (
+    <>
+    <Navbar/> 
     <BrowserRouter>
       <Routes>
         <Route
@@ -49,6 +51,7 @@ const App = () => {
           />
       </Routes>
     </BrowserRouter>
+    </>
   )
 }
 
