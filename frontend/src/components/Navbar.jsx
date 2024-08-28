@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Nabber = () => {
-  const nabberStyle = {
+const Navbar= () => {
+  const navbarStyle = {
     backgroundColor: 'gray', 
     padding: '10px',
     display: 'flex',
@@ -11,7 +11,7 @@ const Nabber = () => {
   };
 
   return (
-    <nav style={nabberStyle}>
+    <nav style={navbarStyle}>
       <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
       <Link to="/About" style={{ color: 'white', textDecoration: 'none' }}>About</Link>
       <Link to="/FAQ" style={{ color: 'white', textDecoration: 'none' }}>FAQ</Link>
@@ -21,4 +21,4 @@ const Nabber = () => {
   );
 };
 
-export default Nabber;
+export default Navbar;
