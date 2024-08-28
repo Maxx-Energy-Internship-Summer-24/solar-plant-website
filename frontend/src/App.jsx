@@ -5,6 +5,9 @@ import About from './pages/About'
 import FAQ from './pages/FAQ'
 import Data from './pages/Data'
 import Login from './pages/Login'
+import Nabber from './components/Nabber';
+import Footer from './components/Footer';
+
 
 import './styles/global.css'
 
