@@ -1,10 +1,11 @@
 import React from 'react'
 import teamwork from '../images/teamwork.jpg'
+import '../styles/About.css'
 
 const About = () => {
   return (
     <div className="App">
-      <header className="App-header flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <header className="about-txt flex flex-col items-center justify-center min-h-screen bg-gray-100">
         <h1 className="text-6xl font-bold m-10">About Us</h1>
         <div className="m-[10%]">
           <p>At MAXX Energy, we are committed to advancing the future of sustainable energy through
@@ -32,7 +33,7 @@ const About = () => {
         }}
          />
       </div>
-      <div className="App-header flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="about-txt flex flex-col items-center justify-center min-h-screen bg-gray-100">
         <h1 className="text-6xl font-bold mb-[10%]">Meet the Team</h1>
         <div className="grid grid-cols-3 justify-items-center gap-4 w-[100%]">
           <div>
