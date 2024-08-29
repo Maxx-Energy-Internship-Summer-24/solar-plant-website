@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import ContactForm from '../components/ContactForm';
+
 
 const faqData = [
   {
@@ -31,7 +33,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="h-[100%] flex justify-center items-center">
+    <div className="h-[100%] flex flex-col justify-center items-center">
     <div className="faq-container max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg m-[10%]" >
       <h1 className="text-4xl font-bold text-center mb-8">Solar Panel FAQ</h1>
       <div className="faq-list">
@@ -52,6 +54,7 @@ const FAQ = () => {
         ))}
       </div>
     </div>
+    <ContactForm />
     </div>
   );
 }
