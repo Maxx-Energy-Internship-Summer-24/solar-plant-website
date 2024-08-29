@@ -9,6 +9,7 @@ const Login = () => {
   const [action,setAction] = useState("Sign Up");
 
   return (
+    <>
     <div className="container" >
     <div className="header" >
     <div className="text" >{action}</div>
@@ -36,6 +37,7 @@ const Login = () => {
       <div className={action==="Sign Up"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}>Login</div>
     </div>
     </div>
+    </>
   )
 }
 
