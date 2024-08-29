@@ -9,8 +9,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 
-import './styles/global.css'
-
+import "./styles/global.css";
 
 const App = () => {
   /*
@@ -27,29 +26,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path='/'
-          element={<Home />}
-          />
-        <Route
-          path='/about'
-          element={<About />}
-          />
-        <Route
-          path='/FAQ'
-          element={<FAQ />}
-          />
-        <Route
-          path='/data'
-          element={<Data />}
-          />
-        <Route
-          path='/login'
-          element={<Login />}
-          />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/FAQ" element={<FAQ />} />
+        <Route path="/data" element={<Data />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;
