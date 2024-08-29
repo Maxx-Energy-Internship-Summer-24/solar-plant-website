@@ -1,13 +1,10 @@
-body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(#2A00B7, #42006C);
-}
 .container {
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    height: 700px;
     width: 600px;
     background: white;
     padding-bottom: 30px;
