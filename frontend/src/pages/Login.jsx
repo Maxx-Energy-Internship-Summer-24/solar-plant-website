@@ -57,7 +57,7 @@ const Login = () => {
           className={action === "Login" ? "submit gray" : "submit"}
           onClick={() => { 
             if (action === "Sign Up") {
-              handleNavigation("/home");
+              handleNavigation("/");
             } else {
               setAction("Sign Up");
             }
@@ -69,7 +69,7 @@ const Login = () => {
           className={action === "Sign Up" ? "submit gray" : "submit"}
           onClick={() => { 
             if (action === "Login") {
-              handleNavigation("/home");
+              handleNavigation("/");
             } else {
               setAction("Login");
             }

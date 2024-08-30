@@ -142,12 +142,16 @@ const SolarPlantHighlightCards = () => {
 };
 
 // PrivateDataSection Component
+// For page navigation
+const handleNavigation = (url) => {
+  window.location.href = url;
+}
 const PrivateDataSection = ({ onLogin }) => {
   return (
     <section className="private-data-section">
       <h2>Private Data Access</h2>
       <p>Login to view detailed data and perform in-depth analysis.</p>
-      <button className="cta-button login-button" onClick={onLogin}>
+      <button className="cta-button login-button" onClick={()=>handleNavigation("/login")}>
         Login
       </button>
     </section>
