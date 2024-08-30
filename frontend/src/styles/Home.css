@@ -1,0 +1,205 @@
+/* Root Variables */
+:root {
+  --primary-color: #1d3557;
+  --accent-color: #fca311;
+  --background-color: #f1faee;
+  --text-color: #343a40;
+  --highlight-color: #e63946;
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Roboto", sans-serif;
+}
+
+/* General Styles */
+body {
+  font-family: var(--font-body);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
+.home-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 80px 20px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.hero-content {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    var(--highlight-color)
+  );
+  color: #ffffff;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-family: var(--font-heading);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--highlight-color),
+    var(--accent-color)
+  );
+  transform: scale(1.05);
+}
+
+.hero-image img {
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Styles */
+.solar-plant-highlights-section,
+.solar-plant-updates-section,
+.solar-plant-highlight-cards-section,
+.private-data-section,
+.features-section,
+.testimonials-section,
+.gallery-section,
+.articles-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.solar-plant-highlights-section:hover,
+.solar-plant-updates-section:hover,
+.solar-plant-highlight-cards-section:hover,
+.private-data-section:hover,
+.features-section:hover,
+.testimonials-section:hover,
+.gallery-section:hover,
+.articles-section:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.highlights-content p,
+.updates-list li,
+.cards-grid .card-item,
+.feature-item,
+.testimonial-item,
+.gallery-item,
+.article-item {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.stats-grid,
+.cards-grid,
+.features-grid,
+.testimonial-carousel,
+.gallery-grid,
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+/* Gallery Items */
+.gallery-item img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Feature, Testimonial, Article, and Card Items */
+.feature-item,
+.testimonial-item,
+.gallery-item,
+.article-item,
+.card-item {
+  background-color: var(--background-color);
+  padding: 25px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.feature-item:hover,
+.testimonial-item:hover,
+.gallery-item:hover,
+.article-item:hover,
+.card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: var(--highlight-color);
+  color: #ffffff;
+}
+
+/* Read More Button */
+.read-more-button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.read-more-button:hover {
+  background-color: var(--highlight-color);
+  transform: scale(1.05);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+}

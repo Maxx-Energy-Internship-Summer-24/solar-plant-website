@@ -7,7 +7,7 @@ const About = () => {
     <div className="App">
       <header className="about-txt flex flex-col items-center justify-center min-h-screen bg-gray-100">
         <h1 className="text-6xl font-bold m-10">About Us</h1>
-        <div className="m-[10%]">
+        <div className="m-[10%] max-w-[50%]">
           <p>At MAXX Energy, we are committed to advancing the future of sustainable energy through
             innovative technology and data-driven solutions. Our latest initiative aims to enhance
             how we and our stakeholders access and analyze solar plant generation data.</p>
