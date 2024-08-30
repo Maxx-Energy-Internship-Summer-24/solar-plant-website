@@ -8,6 +8,10 @@ const Login = () => {
 
   const [action, setAction] = useState("Sign Up");
 
+  const handleNavigation = (url) => {
+    window.location.href = url;
+  }
+
   return (
     <div className="container">
       <div className="header">
@@ -15,14 +19,12 @@ const Login = () => {
         <div className="underline"></div>
       </div>
       <div className="inputs">
-        {/* Show First Name input only if not logging in or resetting password */}
         {action !== "Login" && action !== "Password Reset" && (
           <div className="input">
             <img src={user_icon} alt="" />
             <input type="text" placeholder="Enter your first name" />
           </div>
         )}
-        {/* Show Last Name input only if not logging in or resetting password */}
         {action !== "Login" && action !== "Password Reset" && (
           <div className="input">
             <img src={user_icon} alt="" />
@@ -37,7 +39,6 @@ const Login = () => {
           <img src={password_icon} alt="" />
           <input type="password" placeholder="Enter a password" />
         </div>
-        {/* Show Re-enter Password input only if signing up */}
         {action !== "Login" && (
           <div className="input">
             <img src={password_icon} alt="" />
@@ -45,7 +46,6 @@ const Login = () => {
           </div>
         )}
       </div>
-      {/* Show Forgot Password only if logging in */}
       {action === "Login" && (
         <div className="forgot-password" onClick={() => { setAction("Password Reset") }}>
           Forgot Password?  
@@ -55,13 +55,25 @@ const Login = () => {
       <div className="submit-container">
         <div
           className={action === "Login" ? "submit gray" : "submit"}
-          onClick={() => { setAction("Sign Up") }}
+          onClick={() => { 
+            if (action === "Sign Up") {
+              handleNavigation("/home");
+            } else {
+              setAction("Sign Up");
+            }
+          }}
         >
           Sign Up
         </div>
         <div
           className={action === "Sign Up" ? "submit gray" : "submit"}
-          onClick={() => { setAction("Login") }}
+          onClick={() => { 
+            if (action === "Login") {
+              handleNavigation("/home");
+            } else {
+              setAction("Login");
+            }
+          }}
         >
           Login
         </div>
