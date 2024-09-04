@@ -18,6 +18,7 @@ const Navbar = () => {
     { id: 3, text: 'FAQ', to: '/FAQ' },
     { id: 4, text: 'Data', to: '/Data' },
     { id: 5, text: 'Login', to: '/Login' },
+    { id: 6, text: 'UserProfile', to: '/UserProfile' },
   ];
 
   return (
