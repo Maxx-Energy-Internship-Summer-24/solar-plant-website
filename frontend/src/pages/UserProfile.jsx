@@ -102,7 +102,7 @@ const UserProfile = () => {
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Occupation</div>
-                    <div className="px-4 py-2">Homeowner</div>
+                    <div className="px-4 py-2">Software Developer</div>
                   </div>
                 </div>
               </div>
