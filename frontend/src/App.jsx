@@ -12,17 +12,18 @@ import Footer from './components/Footer'
 import "./styles/global.css";
 
 const App = () => {
-  /*
-  const [data, setData] = useState([{}])
+  const [contacts, setContacts] = useState([])
+
   useEffect(() => {
-    fetch("/members").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-      }
-    )
-  }, []) */
+    fetchContacts()
+  }, [])
+
+  const fetchContacts = async () => {
+    const response = await fetch("http://127.0.0.1:5000/contacts")
+    const data = await response.json()
+    setContacts(data.contacts)
+    console.log(data.contacts)
+  }
   return (
     <>
       
