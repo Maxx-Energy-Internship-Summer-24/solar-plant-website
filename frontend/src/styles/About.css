@@ -2,3 +2,11 @@
     background: linear-gradient(#2A00B7, #42006C);
     color: white;
 }
+.members li:hover {
+    margin-left: 5px;
+    color: orangered;
+}
+
+.members li:active {
+    font-size: 2rem;
+}
