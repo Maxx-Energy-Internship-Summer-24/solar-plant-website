@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -40,10 +39,6 @@ const Navbar = () => {
         ))}
       </ul>
 
-      {/* Mobile Navigation Icon */}
-      <div onClick={handleNav} className='block md:hidden'>
-        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
-      </div>
 
       {/* Mobile Navigation Menu */}
       <ul
