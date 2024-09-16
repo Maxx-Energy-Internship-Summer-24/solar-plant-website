@@ -38,41 +38,31 @@ const About = () => {
         <div className="grid grid-cols-3 justify-items-center gap-4 w-[100%]">
           <div>
             <h1 className='text-4xl font-bold p-4'>DevOps</h1>
-            <ul className='ml-6'>
-              <li>Ty Reid</li>
-              <li>Torell Butler</li>
-              <li>Pierre Antwi</li>
-              <li>Jovens Sagesse</li>
-              <li>Alfred Chukwuma</li>
-              <li>Jahaziel Ramos</li>
-              <li>Brauleo Lizardo</li>
-              <li>Clara Edwards</li>
-            </ul>
-          </div>
-          <div>
-            <h1 className='text-4xl font-bold p-4'>Support</h1>
-            <ul className='ml-6'>
-              <li>Ty Reid</li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+            <ul className='members ml-6'>
+              <li><a href="https://www.linkedin.com/in/ty-reid-27277321b" target="_blank">Ty Reid</a></li>
+              <li><a href="https://www.linkedin.com/in/torell-butler" target="_blank">Torell Butler</a></li>
+              <li><a href="https://www.linkedin.com/in/jovens-sagesse/" target="_blank">Jovens Sagesse</a></li>
+              <li><a href="https://www.linkedin.com/in/jahazielramos/" target="_blank">Jahaziel Ramos</a></li>
+              <li><a href="https://www.linkedin.com/in/ty-reid-27277321b" target="_blank">Brauleo Lizardo</a></li>
+              <li><a href="https://www.linkedin.com/in/clara-edward-a907b7213/" target="_blank">Clara Edwards</a></li>
             </ul>
           </div>
           <div>
             <h1 className='text-4xl font-bold p-4'>Data</h1>
-            <ul className='ml-6'>
-              <li>Ty Reid</li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+            <ul className='members ml-6'>
+              <li><a href="https://www.linkedin.com/in/pierre-antwi-boasiako-123209271/" target="_blank">Pierre Antwi</a></li>
+              <li><a href="https://www.linkedin.com/in/dumebi-chukwuma-1a914a258/" target="_blank">Alfred Chukwuma</a></li>
+            </ul>
+          </div>
+          <div>
+            <h1 className='text-4xl font-bold p-4'>Support</h1>
+            <ul className='members ml-6'>
+              <li>Leah Smith</li>
+              <li>Hsar Reh</li>
+              <li>Michael Tran</li>
+              <li>Arinze Adigwe</li>
+              <li>Gustavo Nava</li>
+              <li>Arnold Aguilar</li>
             </ul>
           </div>
         </div>

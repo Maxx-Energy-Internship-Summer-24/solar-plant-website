@@ -7,6 +7,7 @@ import Data from './pages/Data'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import UserProfile from './pages/UserProfile'
 
 
 
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/data" element={<Data />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/UserProfile" element={<UserProfile />} /> {/* Add route for UserProfile */}
         </Routes>
         <Footer />
       </BrowserRouter>

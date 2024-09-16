@@ -1,123 +1,74 @@
 import React, { useState } from 'react';
 
 function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [result, setResult] = React.useState("");
 
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
+    formData.append("access_key", "f49593df-07b7-4622-b3d9-9355eff6cf68");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
     });
-  };
 
-  const validateForm = () => {
-    const { name, email, subject, message } = formData;
-    const newErrors = {};
-    if (!name) newErrors.name = 'Name is required.';
-    if (!email) newErrors.email = 'Email is required.';
-    if (!subject) newErrors.subject = 'Subject is required.';
-    if (!message) newErrors.message = 'Message is required.';
-    // Simple email validation
-    if (email && !/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Email is invalid.';
-    return newErrors;
-  };
+    const data = await response.json();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length === 0) {
-      // Handle form submission, e.g., send to API
-      console.log('Form submitted', formData);
-      setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
     } else {
-      setErrors(validationErrors);
+      console.log("Error", data);
+      setResult(data.message);
     }
   };
-
   return (
-    <div className="contact-form-container w-[100vw] max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-      {submitted && (
-        <div className="alert-success mb-4 p-4 bg-green-100 text-green-800 rounded">
-          Your message has been sent successfully!
-        </div>
-      )}
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
-          {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
-          {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700">Subject</label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
-          {errors.subject && <p className="text-red-500 text-xs mt-1">{errors.subject}</p>}
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            rows="4"
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-          />
-          {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Send
-        </button>
-      </form>
+    <div class="w-[600px] mx-auto p-6 bg-white shadow-md rounded-lg">
+      <h1 className="text-4xl font-bold text-center mb-8">Contact Form</h1>
+  <form onSubmit={onSubmit} class="space-y-4">
+    <div>
+      <label for="name" class="block text-2xl font-semibold text-black-700">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        required
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      />
     </div>
+    <div>
+      <label for="email" class="block text-2xl font-semibold text-black-700">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      />
+    </div>
+    <div>
+      <label for="message" class="block text-2xl font-semibold text-black-700">Message</label>
+      <textarea
+        name="message"
+        id="message"
+        required
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      ></textarea>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="w-full px-4 py-2 bg-indigo-600 block text-2xl font-semibold text-white rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        Submit Form
+      </button>
+    </div>
+  </form>
+  <span class="block mt-4 text-center text-green-600">{result}</span>
+</div>
   );
 }
 

@@ -4,17 +4,24 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "chart.js": "^4.1.1",
     "frontend": "file:",
+    "detect-port-alt": "^1.1.6",
+    "fsevents": "^2.3.3",
+    "mdb-react-ui-kit": "^8.0.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
