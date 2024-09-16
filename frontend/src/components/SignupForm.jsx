@@ -63,7 +63,7 @@ const SignUpForm = ({ showSignUp, setShowSignUp }) => {
 
   return (
     <div className="w-[600px] mx-auto p-6 bg-white shadow-md rounded-lg  m-[200px]">
-      <h1 className="text-4xl font-bold text-center mb-8">Sign Up Form</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Sign Up</h1>
       {submitted && <span className="block text-center text-green-600 mb-4">Sign up successful!</span>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

@@ -55,7 +55,7 @@ const LoginForm = ({ showSignUp, setShowSignUp }) => {
 
   return (
     <div className="w-[600px] mx-auto p-6 bg-white shadow-md rounded-lg m-[200px]">
-      <h1 className="text-4xl font-bold text-center mb-8">Login Form</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Login</h1>
       {submitted && <span className="block text-center text-green-600 mb-4">Login successful!</span>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -87,18 +87,19 @@ const LoginForm = ({ showSignUp, setShowSignUp }) => {
         </div>
 
         <div className="flex justify-around">
+        <button
+            onClick={callSignUp}
+            className="w-[30%] px-4 py-2 bg-indigo-600 text-2xl font-semibold text-white rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Sign Up
+          </button>
           <button
             type="submit"
             className="w-[30%] px-4 py-2 bg-indigo-600 text-2xl font-semibold text-white rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Login
           </button>
-          <button
-            onClick={callSignUp}
-            className="w-[30%] px-4 py-2 bg-indigo-600 text-2xl font-semibold text-white rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Sign Up
-          </button>
+         
         </div>
       </form>
     </div>
