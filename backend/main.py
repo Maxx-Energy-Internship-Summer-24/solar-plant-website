@@ -1,6 +1,10 @@
 from flask import request, jsonify
 from config import app, db
 from models import Contact
+from auth import auth
+
+
+app.register_blueprint(auth, url_prefix="/")
 
 @app.route("/contacts", methods=["GET"])
 def get_contacts():
@@ -10,19 +14,19 @@ def get_contacts():
 
 @app.route("/create_contact", methods=["POST"])
 def create_contact():
-    first_name = request.json.get("firstName")
-    last_name = request.json.get("lastName")
+    name = request.json.get("name")
     email = request.json.get("email")
+    password = request.json.get("password")
 
-    if not first_name or not last_name or not email:
+    if not name or not password or not email:
         return (
-            jsonify({"message": "You must include a first name, last name and email"}),
+            jsonify({"message": "You must include a name, password and email"}),
             400,
         )
     
-    new_contact = Contact(first_name=first_name, last_name=last_name, email=email)
+    new_contact = Contact(name=name, password=password, email=email)
     try:
-        db.sessoin.add(new_contact)
+        db.session.add(new_contact)
         db.session.commit()
     except Exception as e:
         return jsonify({"message": str(e)}), 400
@@ -37,8 +41,8 @@ def update_contact(user_id):
         return jsonify({"message": "User not found"}), 404
     
     data = request.json
-    contact.first_name = data.get("firstName", contact.first_name)
-    contact.last_name = data.get("lastName", contact.last_name)
+    contact.name = data.get("firstName", contact.name)
+    contact.password = data.get("password", contact.password)
     contact.email = data.get("email", contact.email)
 
     db.sessions.commit()

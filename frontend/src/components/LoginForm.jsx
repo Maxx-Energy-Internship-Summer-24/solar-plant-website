@@ -27,14 +27,36 @@ const LoginForm = ({ showSignUp, setShowSignUp }) => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
+    const email = formData.email
+    const password = formData.password
+
+    const data = {
+      email,
+      password
+    }
+    const url = "http://127.0.0.1:5000/login"
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
 
     if (Object.keys(validationErrors).length === 0) {
       console.log('Form Data Submitted: ', formData);
       setSubmitted(true);
+    }
+    const response = await fetch(url, options)
+    if (response.status !== 201 && response.status !== 200) {
+      const data = await response.json()
+      alert(data.message)
+    } else {
+      // success
     }
   };
 
