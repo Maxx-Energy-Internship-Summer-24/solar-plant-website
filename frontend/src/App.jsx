@@ -15,9 +15,10 @@ import "./styles/global.css";
 
 const App = () => {
   const [contacts, setContacts] = useState([])
+  const [isLoggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
-    fetchContacts()
+   // fetchContacts()
   }, [])
 
   const fetchContacts = async () => {
@@ -36,7 +37,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/data" element={<Data />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}/>} />
           <Route path="/UserProfile" element={<UserProfile />} /> {/* Add route for UserProfile */}
         </Routes>
         <Footer />

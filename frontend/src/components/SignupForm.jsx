@@ -50,7 +50,7 @@ const SignUpForm = ({ showSignUp, setShowSignUp }) => {
       email,
       password
     }
-    const url = "http://127.0.0.1:5000/create_contact"
+    const url = "http://127.0.0.1:5000/sign-up"
     const options = {
       method: "POST",
       headers: {
@@ -68,7 +68,8 @@ const SignUpForm = ({ showSignUp, setShowSignUp }) => {
       const data = await response.json()
       alert(data.message)
     } else {
-      // success
+      setShowSignUp(false)
+      alert("Account created!")
     }
 
   };

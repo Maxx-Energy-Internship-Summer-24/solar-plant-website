@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
-const LoginForm = ({ showSignUp, setShowSignUp }) => {
+const LoginForm = ({ showSignUp, setShowSignUp, isLoggedIn, setLoggedIn }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -56,7 +57,17 @@ const LoginForm = ({ showSignUp, setShowSignUp }) => {
       const data = await response.json()
       alert(data.message)
     } else {
-      // success
+      const data = await response.json()
+      console.log(data)
+      if (data.result == "success") {
+        setLoggedIn(true)
+        alert("You have successfully logged in!")
+
+      } else if (data.result == "wrong password") {
+        alert("You have entered the wrong password")
+      } else if (data.result == "no user found") {
+        alert("No user found")
+      }
     }
   };
 

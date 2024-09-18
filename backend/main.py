@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from config import app, db
-from models import Contact
+from models import Contact, User
 from auth import auth
 
 
@@ -60,6 +60,7 @@ def delete_contact(user_id):
     db.session.commit()
 
     return jsonify({"message": "User deleted!"}), 200
+
 
 if __name__ == "__main__":
     with app.app_context():
