@@ -17,11 +17,10 @@ const About = () => {
             viewable information. This application will empower our employees and stakeholders by
             offering them an intuitive interface to explore and understand our solar plant data.</p>
         </div>
-        <button 
-          onClick={() => alert('Button clicked!')}
+        <button
           className='px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'
-          >
-            Click Me
+          ><a href="https://maxxpotential.com/" target="_blank">
+            Learn More</a>
         </button>
       </header>
       <div>
