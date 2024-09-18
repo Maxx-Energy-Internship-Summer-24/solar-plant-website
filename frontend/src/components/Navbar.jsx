@@ -22,23 +22,23 @@ const Navbar = () => {
 
   return (
     <div className='bg-black flex justify-between items-center h-24 w-full px-4 text-white'>
-      {/* Logo */}
-      <h1 className='text-3xl font-bold text-purple-500'><a href="/">MAXX Energy</a></h1>
+      {/* Logo wrapped in Link */}
+      <Link to="/">
+        <div className='text-3xl font-bold text-purple-500'>
+          MAXX Energy
+        </div>
+      </Link>
 
       {/* Desktop Navigation */}
       <ul className='hidden md:flex'>
         {navItems.map(item => (
-          <li
-            key={item.id}
-            className='p-4 hover:bg-purple-500 rounded-xl m-2 cursor-pointer duration-300 hover:text-white'
-          >
-            <Link to={item.to} style={{ color: 'white', textDecoration: 'none' }}>
+          <Link key={item.id} to={item.to} style={{ textDecoration: 'none' }}>
+            <li className='p-4 hover:bg-purple-500 rounded-xl m-2 cursor-pointer duration-300 hover:text-white'>
               {item.text}
-            </Link>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
-
 
       {/* Mobile Navigation Menu */}
       <ul
@@ -48,19 +48,18 @@ const Navbar = () => {
             : 'ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]'
         }
       >
-        {/* Mobile Logo */}
-        <h1 className='text-3xl font-bold text-purple-500 m-4'>MAXX Energy</h1>
+        {/* Mobile Logo wrapped in Link */}
+        <Link to="/">
+          <div className='text-3xl font-bold text-purple-500 m-4'>MAXX Energy</div>
+        </Link>
 
         {/* Mobile Navigation Items */}
         {navItems.map(item => (
-          <li
-            key={item.id}
-            className='p-4 border-b rounded-xl hover:bg-purple-500 duration-300 hover:text-white cursor-pointer border-gray-600'
-          >
-            <Link to={item.to} style={{ color: 'white', textDecoration: 'none' }}>
+          <Link key={item.id} to={item.to} style={{ textDecoration: 'none' }}>
+            <li className='p-4 border-b rounded-xl hover:bg-purple-500 duration-300 hover:text-white cursor-pointer border-gray-600'>
               {item.text}
-            </Link>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
