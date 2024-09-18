@@ -25,9 +25,9 @@ const HeroSection = () => {
       <div className="hero-content">
         <h1>Welcome to MAXX Energy Data Portal</h1>
         <p>Analyze and explore solar plant generation data effortlessly.</p>
-        <button className="cta-button" onClick={handleExploreDataClick}>
+        <a href="/data"><button className="cta-button" onClick={handleExploreDataClick}>
           Explore Data
-        </button>
+        </button></a>
       </div>
       <div className="hero-image">
         <img src={MaxxImage} alt="Solar Plant" />
@@ -53,7 +53,7 @@ const SolarPlantHighlights = () => {
 
   return (
     <section className="solar-plant-highlights-section">
-      <h2>Solar Plant Highlights</h2>
+      <h1>Solar Plant Highlights</h1>
       {highlights ? (
         <div className="highlights-content">
           <p>
@@ -72,16 +72,16 @@ const SolarPlantHighlights = () => {
         <p>Loading highlights...</p>
       )}
       <div className="stats-grid">
-        <div className="stat-item">
-          <span className="stat-number">150</span>
+        <div className="stat-item"><br></br>
+          <span className="stat-number">150 </span>
           <span className="stat-label">MWh Generated Today</span>
         </div>
-        <div className="stat-item">
-          <span className="stat-number">20%</span>
+        <div className="stat-item"><br></br>
+          <span className="stat-number">20% </span>
           <span className="stat-label">Carbon Footprint Reduction</span>
         </div>
-        <div className="stat-item">
-          <span className="stat-number">5</span>
+        <div className="stat-item"><br></br>
+          <span className="stat-number">4 </span>
           <span className="stat-label">Plants Operating</span>
         </div>
       </div>
@@ -106,7 +106,7 @@ const SolarPlantUpdates = () => {
 
   return (
     <section className="solar-plant-updates-section">
-      <h2>Recent Updates</h2>
+      <h1>Recent Updates</h1>
       {updates.length > 0 ? (
         <ul className="updates-list">
           {updates.map((update) => (
@@ -143,7 +143,7 @@ const SolarPlantHighlightCards = () => {
 
   return (
     <section className="solar-plant-highlight-cards-section">
-      <h2>Solar Plant Highlights</h2>
+      <h2>Solar Plant Highlights</h2><br></br>
       <div className="cards-grid">
         {cards.map((card) => (
           <div key={card.id} className="card-item">
@@ -165,7 +165,7 @@ const PrivateDataSection = ({ onLogin }) => {
   return (
     <section className="private-data-section">
       <h2>Private Data Access</h2>
-      <p>Login to view detailed data and perform in-depth analysis.</p>
+      <p>Login to view detailed data and perform in-depth analysis.</p><br></br>
       <button className="cta-button login-button" onClick={()=>handleNavigation("/login")}>
         Login
       </button>
@@ -296,7 +296,7 @@ const GallerySection = () => {
 
   return (
     <section className="gallery-section">
-      <h2>Our Solar Plants</h2>
+      <h2>Our Solar Plants</h2><br></br>
       <div className="gallery-grid">
         {images.map((image) => (
           <div key={image.id} className="gallery-item">
@@ -359,8 +359,8 @@ const ArticlesSection = () => {
         {articles.map((article) => (
           <div key={article.id} className="article-item">
             <h3>{article.title}</h3>
-            <p>{article.summary}</p>
-            <button className="read-more-button">Read More</button>
+            <p>{article.summary}</p><br></br>
+            <a href="https://summitsolar.com/practical-tips-for-maximizing-your-solar-energy-output/" target="_blank"><button className="read-more-button">Read More</button></a>
           </div>
         ))}
       </div>
