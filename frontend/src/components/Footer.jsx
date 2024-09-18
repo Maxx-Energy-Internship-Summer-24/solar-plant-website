@@ -54,16 +54,16 @@ const Footer = () => {
                 <span className="block uppercase text-white text-sm font-semibold mb-2">Other Resources</span>
                 <ul className="list-unstyled">
                   <li>
-                    <Link className="text-white hover:text-black font-semibold block pb-2 text-sm" to="/license">MIT License</Link>
+                    <Link className="text-white hover:text-black font-semibold block pb-2 text-sm" to="https://mit-license.org">MIT License</Link>
                   </li>
                   <li>
-                    <Link className="text-white hover:text-black font-semibold block pb-2 text-sm" to="/terms">Terms & Conditions</Link>
+                    <Link className="text-white hover:text-black font-semibold block pb-2 text-sm" to="https://www.novibes.com/TnC?gad_source=1&gclid=Cj0KCQjw9Km3BhDjARIsAGUb4nw1uMIHz4cJky1lT-rIEtRgxhQw7go-9n2O64lsvGASBNCxi7lvlTsaAlVXEALw_wcB">Terms & Conditions</Link>
                   </li>
                   <li>
-                    <Link className="text-white hover:text-black font-semibold block pb-2 text-sm" to="/privacy">Privacy Policy</Link>
+                    <Link className="text-white hover:text-black font-semibold block pb-2 text-sm" to="https://en.wikipedia.org/wiki/Privacy_policy">Privacy Policy</Link>
                   </li>
                   <li>
-                    <Link className="text-white hover:text-black font-semibold block pb-2 text-sm" to="/contact">Contact Us</Link>
+                    <Link className="text-white hover:text-black font-semibold block pb-2 text-sm" to="https://maxxpotential.com/contact-us/">Contact Us</Link>
                   </li>
                 </ul>
               </div>
