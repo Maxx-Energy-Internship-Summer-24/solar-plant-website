@@ -47,6 +47,6 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
         except Exception as e:
-            return jsonify({"message": str(e)}), 400
+            return jsonify({"message": "Account already associated with this email."}), 400
 
     return "<h1>Sign Up</h1>"
