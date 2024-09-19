@@ -1,18 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import "../styles/Home.css";
 import MaxxImage from "../images/Maxx.png";
 import AlfredImage from "../images/Alfred.jpeg";
 import JovensImage from "../images/jovens.jpeg";
 import JahirImage from "../images/jahir.jpeg";
+import ChrankaImage from "../images/Charanka_SP.jpg";
+import mountImage from "../images/Desert-Sunlight_SP.png";
+import DatongImage from "../images/Datong-SP.jpg";
+import villanuevaImage from "../images/villanueva_SP.jpg";
+
+
 
 // HeroSection Component
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleExploreDataClick = () => {
+    navigate('/data'); // Navigate to the data page
+  };
+
   return (
     <section className="hero-section">
       <div className="hero-content">
         <h1>Welcome to MAXX Energy Data Portal</h1>
         <p>Analyze and explore solar plant generation data effortlessly.</p>
-        <button className="cta-button">Explore Data</button>
+        <a href="/data"><button className="cta-button" onClick={handleExploreDataClick}>
+          Explore Data
+        </button></a>
       </div>
       <div className="hero-image">
         <img src={MaxxImage} alt="Solar Plant" />
@@ -38,7 +53,7 @@ const SolarPlantHighlights = () => {
 
   return (
     <section className="solar-plant-highlights-section">
-      <h2>Solar Plant Highlights</h2>
+      <h1>Solar Plant Highlights</h1>
       {highlights ? (
         <div className="highlights-content">
           <p>
@@ -57,16 +72,16 @@ const SolarPlantHighlights = () => {
         <p>Loading highlights...</p>
       )}
       <div className="stats-grid">
-        <div className="stat-item">
-          <span className="stat-number">150</span>
+        <div className="stat-item"><br></br>
+          <span className="stat-number">150 </span>
           <span className="stat-label">MWh Generated Today</span>
         </div>
-        <div className="stat-item">
-          <span className="stat-number">20%</span>
+        <div className="stat-item"><br></br>
+          <span className="stat-number">20% </span>
           <span className="stat-label">Carbon Footprint Reduction</span>
         </div>
-        <div className="stat-item">
-          <span className="stat-number">5</span>
+        <div className="stat-item"><br></br>
+          <span className="stat-number">4 </span>
           <span className="stat-label">Plants Operating</span>
         </div>
       </div>
@@ -91,7 +106,7 @@ const SolarPlantUpdates = () => {
 
   return (
     <section className="solar-plant-updates-section">
-      <h2>Recent Updates</h2>
+      <h1>Recent Updates</h1>
       {updates.length > 0 ? (
         <ul className="updates-list">
           {updates.map((update) => (
@@ -128,7 +143,7 @@ const SolarPlantHighlightCards = () => {
 
   return (
     <section className="solar-plant-highlight-cards-section">
-      <h2>Solar Plant Highlights</h2>
+      <h2>Solar Plant Highlights</h2><br></br>
       <div className="cards-grid">
         {cards.map((card) => (
           <div key={card.id} className="card-item">
@@ -150,7 +165,7 @@ const PrivateDataSection = ({ onLogin }) => {
   return (
     <section className="private-data-section">
       <h2>Private Data Access</h2>
-      <p>Login to view detailed data and perform in-depth analysis.</p>
+      <p>Login to view detailed data and perform in-depth analysis.</p><br></br>
       <button className="cta-button login-button" onClick={()=>handleNavigation("/login")}>
         Login
       </button>
@@ -241,35 +256,72 @@ const TestimonialsSection = () => {
   );
 };
 
-// GallerySection Component
 const GallerySection = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    // Simulate data fetching
     setTimeout(() => {
       setImages([
-        { id: 1, src: "/path/to/image1.jpg", alt: "Solar Plant 1" },
-        { id: 2, src: "/path/to/image2.jpg", alt: "Solar Plant 2" },
-        { id: 3, src: "/path/to/image3.jpg", alt: "Solar Plant 3" },
-        { id: 4, src: "/path/to/image4.jpg", alt: "Solar Plant 4" },
+        { 
+          id: 1, 
+          src: ChrankaImage, 
+          alt: "Solar Plant 1", 
+          name: "Charanka Solar Park, India", 
+          link: "https://en.wikipedia.org/wiki/Gujarat_Solar_Park-1#:~:text=Gujarat%20Solar%20Park%2D1%20(also,2%2C000%20hectares(4%2C900%20acres)." 
+        },
+        { 
+          id: 2, 
+          src: DatongImage, 
+          alt: "Solar Plant 2", 
+          name: "Datong Solar Power Top Runner Base, China", 
+          link: "https://www.power-technology.com/data-insights/power-plant-profile-datong-power-station-solar-pv-park-china/" 
+        },
+        { 
+          id: 3, 
+          src: mountImage, 
+          alt: "Solar Plant 3", 
+          name: "Desert Sunlight Solar Farm, USA", 
+          link: "https://example.com/desert-sunlight" 
+        },
+        { 
+          id: 4, 
+          src: villanuevaImage, 
+          alt: "Solar Plant 4", 
+          name: "Villanueva Solar Park, Mexico", 
+          link: "https://www.nsenergybusiness.com/projects/villanueva-solar-power-plant-mexico/" 
+        },
       ]);
     }, 1000);
   }, []);
 
   return (
     <section className="gallery-section">
-      <h2>Our Solar Plants</h2>
+      <h2>Our Solar Plants</h2><br></br>
       <div className="gallery-grid">
         {images.map((image) => (
           <div key={image.id} className="gallery-item">
-            <img src={image.src} alt={image.alt} />
+            <img 
+              src={image.src} 
+              alt={image.alt}
+              onError={(e) => {
+                console.error(`Failed to load image at ${e.target.src}`);
+                e.target.style.display = 'none'; // Optionally hide the broken image icon
+              }} 
+            />
+            {/* Display the name and link */}
+            <p className="plant-name">
+              <a href={image.link} target="_blank" rel="noopener noreferrer">
+                {image.name}
+              </a>
+            </p>
           </div>
         ))}
       </div>
     </section>
   );
 };
+
+
 
 // ArticlesSection Component
 const ArticlesSection = () => {
@@ -307,8 +359,8 @@ const ArticlesSection = () => {
         {articles.map((article) => (
           <div key={article.id} className="article-item">
             <h3>{article.title}</h3>
-            <p>{article.summary}</p>
-            <button className="read-more-button">Read More</button>
+            <p>{article.summary}</p><br></br>
+            <a href="https://summitsolar.com/practical-tips-for-maximizing-your-solar-energy-output/" target="_blank"><button className="read-more-button">Read More</button></a>
           </div>
         ))}
       </div>
