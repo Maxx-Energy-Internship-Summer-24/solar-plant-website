@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
-const LoginForm = ({ showSignUp, setShowSignUp }) => {
+const LoginForm = ({ showSignUp, setShowSignUp, isLoggedIn, setLoggedIn, userInfo, setUserInfo }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -8,6 +9,8 @@ const LoginForm = ({ showSignUp, setShowSignUp }) => {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+
+  const navigate = useNavigate()
 
   // Form validation function
   const validate = () => {
@@ -27,14 +30,48 @@ const LoginForm = ({ showSignUp, setShowSignUp }) => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
+    const email = formData.email
+    const password = formData.password
+
+    const data = {
+      email,
+      password
+    }
+    const url = "http://127.0.0.1:5000/login"
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
 
     if (Object.keys(validationErrors).length === 0) {
       console.log('Form Data Submitted: ', formData);
-      setSubmitted(true);
+      
+    }
+    const response = await fetch(url, options)
+    if (response.status !== 201 && response.status !== 200) {
+      const data = await response.json()
+      alert(data.message)
+    } else {
+      const data = await response.json()
+      if (data.result == "success") {
+        setSubmitted(true)
+        setLoggedIn(true)
+        alert("You have successfully logged in!")
+        setUserInfo(data.user)
+        sessionStorage.setItem('user', JSON.stringify(data.user));
+        navigate('/UserProfile')
+      } else if (data.result == "wrong password") {
+        alert("You have entered the wrong password")
+      } else if (data.result == "no user found") {
+        alert("No user found")
+      }
     }
   };
 
