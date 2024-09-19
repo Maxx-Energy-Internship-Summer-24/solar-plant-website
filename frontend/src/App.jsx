@@ -8,25 +8,15 @@ import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import UserProfile from './pages/UserProfile'
-
-
-
+import ProtectedRoute from './components/ProtectedRoute'
 import "./styles/global.css";
+
 
 const App = () => {
   const [contacts, setContacts] = useState([])
   const [isLoggedIn, setLoggedIn] = useState(false)
+  const [userInfo, setUserInfo] = useState({})
 
-  useEffect(() => {
-   // fetchContacts()
-  }, [])
-
-  const fetchContacts = async () => {
-    const response = await fetch("http://127.0.0.1:5000/contacts")
-    const data = await response.json()
-    setContacts(data.contacts)
-    console.log(data.contacts)
-  }
   return (
     <>
       
@@ -37,9 +27,18 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/data" element={<Data />} />
-          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}/>} />
-          <Route path="/UserProfile" element={<UserProfile />} /> {/* Add route for UserProfile */}
+          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} userInfo={userInfo} setUserInfo={setUserInfo}/>} />
+          {/* Add route for UserProfile */}
+          <Route 
+            path="/UserProfile" 
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <UserProfile isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} userInfo={userInfo} setUserInfo={setUserInfo} />
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
+          
         <Footer />
       </BrowserRouter>
     </>

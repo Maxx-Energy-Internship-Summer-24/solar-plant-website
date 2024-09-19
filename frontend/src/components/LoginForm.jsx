@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-const LoginForm = ({ showSignUp, setShowSignUp, isLoggedIn, setLoggedIn }) => {
+const LoginForm = ({ showSignUp, setShowSignUp, isLoggedIn, setLoggedIn, userInfo, setUserInfo }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -9,6 +9,8 @@ const LoginForm = ({ showSignUp, setShowSignUp, isLoggedIn, setLoggedIn }) => {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+
+  const navigate = useNavigate()
 
   // Form validation function
   const validate = () => {
@@ -50,7 +52,7 @@ const LoginForm = ({ showSignUp, setShowSignUp, isLoggedIn, setLoggedIn }) => {
 
     if (Object.keys(validationErrors).length === 0) {
       console.log('Form Data Submitted: ', formData);
-      setSubmitted(true);
+      
     }
     const response = await fetch(url, options)
     if (response.status !== 201 && response.status !== 200) {
@@ -58,11 +60,13 @@ const LoginForm = ({ showSignUp, setShowSignUp, isLoggedIn, setLoggedIn }) => {
       alert(data.message)
     } else {
       const data = await response.json()
-      console.log(data)
       if (data.result == "success") {
+        setSubmitted(true)
         setLoggedIn(true)
         alert("You have successfully logged in!")
-
+        setUserInfo(data.user)
+        sessionStorage.setItem('user', JSON.stringify(data.user));
+        navigate('/UserProfile')
       } else if (data.result == "wrong password") {
         alert("You have entered the wrong password")
       } else if (data.result == "no user found") {

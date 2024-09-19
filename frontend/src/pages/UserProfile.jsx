@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import alfred from "../images/Alfred.jpeg"
+import FormPopup from '../components/FormPopup';
+import { useNavigate } from 'react-router-dom'
 
-const UserProfile = () => {
+const UserProfile = ({userInfo, setUserInfo, isLoggedIn, setLoggedIn}) => {
   const [open, setOpen] = useState(false);
+  const user = JSON.parse(sessionStorage.getItem('user'));
+  const navigate = useNavigate();
+  useEffect(() => {
+    setUserInfo(user)
+  }, []);
+  const handleLogout = () => {
+    sessionStorage.removeItem('user'); // Clear sessionStorage
+    setUserInfo(null); // Reset userInfo state
+    setLoggedIn(false)
+    navigate('/login'); // Redirect to login page
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
@@ -21,20 +34,19 @@ const UserProfile = () => {
             </button>
           </div>
           <nav className={`flex-col flex-grow pb-4 md:pb-0 ${open ? 'flex' : 'hidden'} md:flex md:justify-end md:flex-row`}>
-            <div className="relative" onClick={() => setOpen(false)}>
-              <button className="flex flex-row items-center space-x-2 w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent hover:bg-blue-800 md:w-auto md:inline md:mt-0 md:ml-4 hover:bg-gray-200 focus:bg-blue-800 focus:outline-none focus:shadow-outline">
-                <span className="text-black">Dumebi Chukwuma</span>
-                <img className="inline h-6 rounded-full" src={alfred} alt="Profile" />
+            <div className="relative" onClick={() => setOpen(true)}>
+              <button className="flex flex-row items-center space-x-2 w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent md:w-auto md:inline md:mt-0 md:ml-4 hover:bg-gray-200 focus:bg-blue-800 focus:outline-none focus:shadow-outline">
+                <span className="text-black">{userInfo.name}</span>
                 <svg fill="currentColor" viewBox="0 0 20 20" className={`inline w-4 h-4 transition-transform duration-200 transform ${open ? 'rotate-180' : 'rotate-0'}`}>
                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path>
                 </svg>
               </button>
               <div className={`absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 ${open ? 'block' : 'hidden'}`}>
                 <div className="py-2 bg-white text-blue-800 text-sm rounded-sm border border-main-color shadow-sm">
-                  <a className="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Settings</a>
-                  <a className="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Help</a>
                   <div className="border-b"></div>
-                  <a className="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Logout</a>
+                  <button className="block w-full text-left px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline" onClick={handleLogout}>
+                    Logout
+                  </button>
                 </div>
               </div>
             </div>
@@ -48,10 +60,7 @@ const UserProfile = () => {
           {/* Profile Picture and Info */}
           <div className="w-full md:w-3/12 md:px-2">
             <div className="bg-white p-3 border-t-4 border-purple-400 rounded-lg">
-              <div className="image overflow-hidden">
-                <img className="h-auto w-full mx-auto rounded-lg" src={alfred} alt="Profile" />
-              </div>
-              <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">Dumebi Chukwuma </h1>
+              <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{user.name}</h1>
               <h3 className="text-gray-600 font-lg text-semibold leading-6">Solar Customer</h3>
               <p className="text-sm text-gray-500 hover:text-gray-600 leading-6">We’re thrilled to have you as a customer! Our goal is to make sure your solar system runs smoothly and meets your needs. If you ever have questions or need help, don’t hesitate to reach out—we’re here for you.</p>
               <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
@@ -82,28 +91,29 @@ const UserProfile = () => {
                 <div className="grid md:grid-cols-2 text-sm gap-4">
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">First Name</div>
-                    <div className="px-4 py-2">Dumebi</div>
+                    <div className="px-4 py-2">{user.firstName}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Last Name</div>
-                    <div className="px-4 py-2">Chukwuma</div>
+                    <div className="px-4 py-2">{user.lastName}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Gender</div>
-                    <div className="px-4 py-2">Male</div>
+                    <div className="px-4 py-2">{user.gender}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Contact No.</div>
-                    <div className="px-4 py-2">(718) 687-3094</div>
+                    <div className="px-4 py-2">{user.phoneNumber}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Current Address</div>
-                    <div className="px-4 py-2">Queens, NY</div>
+                    <div className="px-4 py-2">{user.address}</div>
                   </div>
                   <div className="grid grid-cols-2">
                     <div className="px-4 py-2 font-semibold">Occupation</div>
-                    <div className="px-4 py-2">Software Developer</div>
+                    <div className="px-4 py-2">{user.occupation}</div>
                   </div>
+                  <FormPopup userInfo={userInfo} setUserInfo={setUserInfo}/>
                 </div>
               </div>
             </div>

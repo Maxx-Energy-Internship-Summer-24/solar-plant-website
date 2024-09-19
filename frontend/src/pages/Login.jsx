@@ -6,7 +6,7 @@ import password_icon from '../images/password.png';
 import SignUpForm from '../components/SignupForm';
 import LoginForm from '../components/LoginForm';
 
-const Login = ({isLoggedIn, setLoggedIn}) => {
+const Login = ({isLoggedIn, setLoggedIn, userInfo, setUserInfo}) => {
 
   const [action, setAction] = useState("Sign Up");
   const [showSignUp, setShowSignUp] = useState(true);
@@ -17,7 +17,7 @@ const Login = ({isLoggedIn, setLoggedIn}) => {
 
   return (
     <>
-    {showSignUp ? <SignUpForm showSignUp={showSignUp} setShowSignUp={setShowSignUp}/> : <LoginForm showSignUp={showSignUp} setShowSignUp={setShowSignUp} isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}/>}
+    {showSignUp ? <SignUpForm showSignUp={showSignUp} setShowSignUp={setShowSignUp}/> : <LoginForm showSignUp={showSignUp} setShowSignUp={setShowSignUp} isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} userInfo={userInfo} setUserInfo={setUserInfo}/>}
     </>
   );
 }

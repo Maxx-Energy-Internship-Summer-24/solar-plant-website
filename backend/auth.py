@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from config import db
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
@@ -14,13 +15,14 @@ def login():
         user = User.query.filter_by(email=email).first()
 
         data = {
-            "result": ""
+            "result": "",
+            "user": {}
         }
-        print(user)
         try:
             if user:
                 if check_password_hash(user.password, password):
                     data['result'] = "success"
+                    data['user'] = user.to_json()
                 else:
                     data['result'] = "wrong password"
             else: 

@@ -12,26 +12,24 @@ def get_contacts():
     json_contacts = list(map(lambda x: x.to_json(), contacts))
     return jsonify({"contacts": json_contacts})
 
-@app.route("/create_contact", methods=["POST"])
-def create_contact():
-    name = request.json.get("name")
-    email = request.json.get("email")
-    password = request.json.get("password")
+@app.route("/update-info", methods=["PATCH", "POST"])
+def update_info():
+    data = request.json
+    email = data.get("email")
+    user = User.query.filter_by(email=email).first()
+    if not user:
+        return jsonify({"message": email}), 404
+    
+    user.first_name = data.get("firstName", user.first_name)
+    user.last_name = data.get("lastName", user.last_name)
+    user.gender = data.get("gender", user.gender)
+    user.phone_number = data.get("phoneNumber", user.phone_number)
+    user.address = data.get("address", user.address)
+    user.occupation = data.get("occupation", user.occupation)
+    
+    db.session.commit()
 
-    if not name or not password or not email:
-        return (
-            jsonify({"message": "You must include a name, password and email"}),
-            400,
-        )
-    
-    new_contact = Contact(name=name, password=password, email=email)
-    try:
-        db.session.add(new_contact)
-        db.session.commit()
-    except Exception as e:
-        return jsonify({"message": str(e)}), 400
-    
-    return jsonify({"message": "User created!"}), 201
+    return jsonify({"message": "User updated."}), 200
 
 @app.route("/update_contact/<int:user_id>", methods=["PATCH"])
 def update_contact(user_id):
