@@ -8,5 +8,5 @@
 }
 
 .members li:active {
-    font-size: 2rem;
+    color: black;
 }
